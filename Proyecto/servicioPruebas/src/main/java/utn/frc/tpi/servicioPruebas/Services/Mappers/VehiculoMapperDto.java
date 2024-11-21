@@ -12,7 +12,7 @@ public class VehiculoMapperDto implements Function<Vehiculo, VehiculoDto> {
     public VehiculoDto apply(Vehiculo vehiculo) {
         return new VehiculoDto(vehiculo.getId(),
                                 vehiculo.getAnio(),
-                                vehiculo.getIdModelo(),
+                                vehiculo.getModelo(),
                                 vehiculo.getPatente());
     }
 }

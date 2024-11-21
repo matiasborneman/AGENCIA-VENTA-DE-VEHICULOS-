@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -17,9 +19,9 @@ public class Empleado {
     @GeneratedValue(generator = "Empleados")
     @TableGenerator(name= "Empleados", table = "sqlite_sequence",
                     pkColumnName = "name", valueColumnName = "seq",
-                    pkColumnValue = "legajo",
+                    pkColumnValue = "id",
                     initialValue = 1, allocationSize = 1)
-    private long legajo;
+    private long id;
 
     @Schema(description = "Apellido del Empleado", example = "Perez")
     @Column(name="APELLIDO")
@@ -32,4 +34,15 @@ public class Empleado {
     @Schema(description = "Identificacion del Telefono de contacto del Empleado", example = "35112345678")
     @Column(name="TELEFONO_CONTACTO")
     private long telefonoContacto;
+
+    @Schema(description = "Pruebas del Empleado", example = "Prueba 1...")
+    @OneToMany(mappedBy = "empleado")
+    private List<Prueba> pruebas;
+
+    public Empleado(long legajo, String apellido, String nombre, long telefonoContacto) {
+        this.id = legajo;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.telefonoContacto = telefonoContacto;
+    }
 }

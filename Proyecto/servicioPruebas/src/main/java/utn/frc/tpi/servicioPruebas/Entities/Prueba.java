@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,14 +37,33 @@ public class Prueba {
     private LocalDateTime fechaHoraInicio;
 
     @Schema(description = "Identificador del Empleado de la prueba", example = "1")
-    @Column(name="ID_EMPLEADO")
-    private long idEmpleado;
+    @ManyToOne
+    private Empleado empleado;
 
     @Schema(description = "Identificador del Interesado de la prueba", example = "1")
-    @Column(name="ID_INTERESADO")
-    private long idInteresado;
+    @ManyToOne
+    @JoinColumn(name = "ID_INTERESADO")
+    private Interesado interesado;
 
     @Schema(description = "Identificador del Vehiculo de la prueba", example = "1")
-    @Column(name="ID_VEHICULO")
-    private long idVehiculo;
+    @ManyToOne
+    private Vehiculo vehiculo;
+
+    public Prueba(Empleado empleado, Interesado interesado, Vehiculo vehiculo) {
+        this.fechaHoraInicio = LocalDateTime.now();
+        this.fechaHoraFin= LocalDateTime.now();
+        this.empleado = empleado;
+        this.interesado = interesado;
+        this.vehiculo = vehiculo;
+    }
+
+    public Prueba finalizarPrueba(String comentarios){
+        this.comentarios=comentarios;
+        this.fechaHoraFin= LocalDateTime.now();
+        return this;
+    }
+    public boolean estaEnPrueba()
+    {
+        return this.fechaHoraInicio.isEqual(this.fechaHoraFin);
+    }
 }
