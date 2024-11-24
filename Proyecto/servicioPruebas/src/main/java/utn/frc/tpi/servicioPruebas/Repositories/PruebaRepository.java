@@ -17,5 +17,5 @@ public interface PruebaRepository extends JpaRepository<Prueba,Long> {
 
     List<Prueba> findAllByVehiculoId(long idVehiculo);
 
-    List<PruebaDto> findAllByEmpleadoId(long idEmpleado);
+    List<PruebaDto> findAllByEmpleadoLegajo(long idEmpleado);
 }

@@ -25,6 +25,7 @@ public class Posicion {
 
     @Schema(description="Identificacion del vehiculo", example="1")
     @ManyToOne
+    @JoinColumn(name = "ID_VEHICULO")
     private Vehiculo vehiculo;
 
     @Schema(description = "Identificador de la fecha y hora de la posición", example = "...")

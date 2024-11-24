@@ -1,5 +1,6 @@
 package utn.frc.tpi.servicioPruebas.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -34,12 +36,18 @@ public class Interesado {
     @Schema(description = "Nombre del Interesado", example = "Juan")
     @Column(name="NOMBRE")
     private String nombre;
-    @Schema(description = "Identificacion si esta Restingido el Interesado", example = "Juan")
+    @Schema(description = "Numero de Licencia", example = "123456")
+    @Column(name="NRO_LICENCIA")
+    private String numeroLicencia;
+    @Schema(description = "Identificacion si esta Restingido el Interesado", example = "false")
     @Column(name="RESTRINGIDO")
     private boolean restringido;
     @Schema(description = "Tipo documento del Interesado", example = "DNI")
     @Column(name="TIPO_DOCUMENTO")
     private String tipoDocumento;
+    @Schema(description = "Pruebas del Interesado", example = "Prueba 1...")
+    @OneToMany(mappedBy = "interesado",fetch = FetchType.LAZY)
+    private List<Prueba> pruebas;
 
     public boolean isValidated(){
         return ( !this.restringido || (!this.fechaVencimeintoLicencia.isBefore(LocalDateTime.now())));

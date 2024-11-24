@@ -1,5 +1,7 @@
 package utn.frc.tpi.servicioPruebas.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +30,8 @@ public class Marca {
     private String nombre;
 
     @Schema(description = "Modelos", example = ".....")
-    @OneToMany(mappedBy = "marca")
+    @OneToMany(mappedBy = "marca",fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Modelo> modelos;
 
     public Marca(long id, String nombre) {

@@ -4,15 +4,18 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.service.spi.ServiceException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import utn.frc.tpi.servicioPruebas.Entities.Dto.*;
 import utn.frc.tpi.servicioPruebas.Entities.Posicion;
 import utn.frc.tpi.servicioPruebas.Services.PruebaService;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @Tag(name="Pruebas",description = "Catalogo de Pruebas")
@@ -62,7 +65,9 @@ public class PruebaController {
     @Operation(summary = "Obtiene el listado de Pruebas")
     public ResponseEntity<List<PruebaDto>> getAllInProcess(@RequestParam LocalDateTime dateTime) {
        List<PruebaDto> pruebas = this.pruebaService.getAllInProgress(dateTime);
-       return ResponseEntity.ok(pruebas);
+        return pruebas.isEmpty()
+                ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+                : ResponseEntity.status(HttpStatus.OK).body(pruebas);
     }
     @PostMapping("/enviar-posicion/")
     @Operation(summary = "Recibe una posicion y evalua si excedio los limites")
@@ -75,6 +80,11 @@ public class PruebaController {
                     .status(HttpStatus.NOT_FOUND)
                     .header("error-message", e1.getMessage())
                     .build();
+        }catch (WebClientResponseException e2 ) {
+            HttpHeaders headers = e2.getHeaders();
+            return ResponseEntity.status(e2.getStatusCode())
+                    .header( "error-message",
+                            Objects.requireNonNull(headers.getFirst("error-message"))).build();
         }
     }
     @GetMapping("/reportes/{id}/prueba-vehiculo")
@@ -89,7 +99,9 @@ public class PruebaController {
     public ResponseEntity<List<PruebaDto>> getAllIncidentes()
     {
         List<PruebaDto> pruebas = this.pruebaService.getAllIncidentes();
-        return ResponseEntity.ok(pruebas);
+        return pruebas.isEmpty()
+                ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+                : ResponseEntity.status(HttpStatus.OK).body(pruebas);
     }
     @GetMapping("/reportes/{id}/kilometros-recorridos/")
     @Operation(summary = "Obtiene la cantidad de kilometros recorridos por un vehiculo en un tiempo determinado")
@@ -104,6 +116,8 @@ public class PruebaController {
     public ResponseEntity<List<PruebaDto>> getAllIncidentesByEmpleado(@PathVariable("id") Long idEmpleado)
     {
         List<PruebaDto> pruebas = this.pruebaService.getAllIncidentesByEmpleado(idEmpleado);
-        return ResponseEntity.ok(pruebas);
+        return pruebas.isEmpty()
+                ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+                : ResponseEntity.status(HttpStatus.OK).body(pruebas);
     }
 }

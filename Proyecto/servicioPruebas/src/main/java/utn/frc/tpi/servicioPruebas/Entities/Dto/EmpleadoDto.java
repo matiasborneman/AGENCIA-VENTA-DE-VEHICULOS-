@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmpleadoDto {
-    @Schema(description = "Identificacion del empleado", example = "1")
+    @Schema(description = "Identificacion del empleado", example = "3")
     private long legajo;
-    @Schema(description = "Nombre del empleado", example = "1")
+    @Schema(description = "Nombre del empleado", example = "German")
     private String nombre;
-    @Schema(description = "Apellido del empleado", example = "1")
+    @Schema(description = "Apellido del empleado", example = "Darín")
     private String apellido;
-    @Schema(description = "Telefono de contacto del empleado", example = "1")
+    @Schema(description = "Telefono de contacto del empleado", example = "351900003")
     private long telefonoContacto;
 }

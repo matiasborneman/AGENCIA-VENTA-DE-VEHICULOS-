@@ -10,7 +10,7 @@ import java.util.function.Function;
 public class EmpleadoMapperDto implements Function<Empleado, EmpleadoDto> {
     @Override
     public EmpleadoDto apply(Empleado empleado) {
-        return new EmpleadoDto(empleado.getId(),
+        return new EmpleadoDto(empleado.getLegajo(),
                 empleado.getNombre(),
                 empleado.getApellido(),
                 empleado.getTelefonoContacto());

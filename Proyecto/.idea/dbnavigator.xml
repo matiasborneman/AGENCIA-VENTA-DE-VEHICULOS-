@@ -17,7 +17,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[ALTER TABLE pruebas ADD COLUMN INCIDENTE Boolean;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -35,7 +35,7 @@
     <filter-actions connection-id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55" dataset="main.Marcas" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55" dataset="main.Modelos" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55" dataset="main.Posiciones" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55" dataset="main.Pruebas" active-filter-id="1002d3d7-2847-4535-8ba0-4bbf0b97b905">
+    <filter-actions connection-id="3ed3ee93-710b-4ad6-aa5f-7fc3ce3a8e55" dataset="main.Pruebas" active-filter-id="EMPTY_FILTER">
       <filter id="1002d3d7-2847-4535-8ba0-4bbf0b97b905" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="ID" operator="=" value="" active="true" />
       </filter>
@@ -56,6 +56,9 @@
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -552,5 +555,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

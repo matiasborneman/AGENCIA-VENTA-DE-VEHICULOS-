@@ -14,6 +14,7 @@ public class PruebaDtoMapper implements Function<Prueba, PruebaDto> {
                 prueba.getComentarios(),
                 prueba.getFechaHoraFin(),
                 prueba.getFechaHoraInicio(),
+                prueba.isIncidente(),
                 prueba.getEmpleado(),
                 prueba.getInteresado(),
                 prueba.getVehiculo());

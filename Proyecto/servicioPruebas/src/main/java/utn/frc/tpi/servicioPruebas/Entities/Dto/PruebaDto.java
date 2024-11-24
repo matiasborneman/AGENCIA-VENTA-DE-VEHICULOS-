@@ -1,6 +1,7 @@
 package utn.frc.tpi.servicioPruebas.Entities.Dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PruebaDto {
 
-    @Schema(description = "Identificador de la Prueba", example = "1234",required = true)
+    @Schema(description = "Identificador de la Prueba", example = "1234")
     private long id;
 
     @Schema(description = "Comentario de la prueba", example = "....")
@@ -26,6 +27,9 @@ public class PruebaDto {
 
     @Schema(description = "Identificador de la fecha y hora de inicio de la prueba", example = "...")
     private LocalDateTime fechaHoraInicio;
+
+    @Schema(description = "Indicador si la prueba tuvo incidentes", example = "false")
+    private boolean incidente;
 
     @Schema(description = "Identificador del Empleado de la prueba", example = "1")
     private Empleado empleado;

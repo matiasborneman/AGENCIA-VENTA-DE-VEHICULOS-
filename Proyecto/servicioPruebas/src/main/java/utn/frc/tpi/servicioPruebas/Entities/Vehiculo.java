@@ -1,5 +1,6 @@
 package utn.frc.tpi.servicioPruebas.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -38,11 +39,11 @@ public class Vehiculo {
     private String patente;
 
     @Schema(description = "Pruebas del Vehiculo", example = "Prueba 1...")
-    @OneToMany(mappedBy = "vehiculo")
+    @OneToMany(mappedBy = "vehiculo",fetch = FetchType.LAZY)
     private List<Prueba> pruebas;
 
     @Schema(description = "Posiciones del Vehiculo", example = "Posicion hora...")
-    @OneToMany(mappedBy = "vehiculo")
+    @OneToMany(mappedBy = "vehiculo",fetch = FetchType.LAZY)
     private List<Posicion> posiciones;
 
     public Vehiculo(long id, Long anio, Modelo modelo, String patente) {

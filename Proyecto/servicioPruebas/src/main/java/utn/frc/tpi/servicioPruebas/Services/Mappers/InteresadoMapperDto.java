@@ -15,6 +15,7 @@ public class InteresadoMapperDto implements Function<Interesado, InteresadoDto> 
                 interesado.getDocumento(),
                 interesado.getNombre(),
                 interesado.getApellido(),
+                interesado.getNumeroLicencia(),
                 interesado.isRestringido(),
                 interesado.getFechaVencimeintoLicencia());
     }
