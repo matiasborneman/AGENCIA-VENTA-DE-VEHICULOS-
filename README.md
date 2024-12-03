@@ -13,8 +13,7 @@ Este repositorio contiene el proyecto **Agencia Venta de Vehículos**, una aplic
 5. [Instalación y Configuración](#instalación-y-configuración)
 6. [Uso](#uso)
 7. [Arquitectura](#arquitectura)
-8. [Contribuciones](#contribuciones)
-9. [Contacto](#contacto)
+8. [Contacto](#contacto)
 
 ---
 
@@ -73,3 +72,51 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
    ```bash
    git clone https://github.com/matiasborneman/AGENCIA-VENTA-DE-VEHICULOS.git
    cd AGENCIA-VENTA-DE-VEHICULOS
+   # AGENCIA VENTA DE VEHÍCULOS
+
+
+---
+
+## Uso
+
+### Endpoints Principales:
+
+- **Vehículos:**
+  - GET `/vehiculos`: Listar vehículos.
+  - POST `/vehiculos`: Crear un nuevo vehículo.
+  - PUT `/vehiculos/{id}`: Actualizar un vehículo.
+  - DELETE `/vehiculos/{id}`: Eliminar un vehículo.
+
+- **Clientes:**
+  - GET `/clientes`: Listar clientes.
+  - POST `/clientes`: Crear un nuevo cliente.
+  - PUT `/clientes/{id}`: Actualizar un cliente.
+  - DELETE `/clientes/{id}`: Eliminar un cliente.
+
+- **Ventas:**
+  - GET `/ventas`: Listar ventas.
+  - POST `/ventas`: Registrar una nueva venta.
+
+Consulta la documentación de la API para más detalles sobre los parámetros y formatos de las solicitudes.
+
+---
+
+## Arquitectura
+
+El proyecto sigue una arquitectura **MVC (Modelo-Vista-Controlador)** con las siguientes capas principales:
+
+- **Controladores:** Gestión de las solicitudes HTTP y respuestas.
+- **Servicios:** Lógica de negocio.
+- **Repositorios:** Interacción con la base de datos utilizando Spring Data JPA.
+- **Modelos:** Representación de las entidades de datos.
+
+---
+
+## Contacto
+
+**Autor:** Matias Ezequiel Borneman  
+**Email:** [matias_borneman@hotmail.com](mailto:matias_borneman@hotmail.com)  
+**GitHub:** [matiasborneman](https://github.com/matiasborneman)
+
+Si tienes alguna duda o sugerencia sobre el proyecto, no dudes en contactarme.
+
