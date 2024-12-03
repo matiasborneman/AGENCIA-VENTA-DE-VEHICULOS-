@@ -1,6 +1,6 @@
 # AGENCIA VENTA DE VEHÍCULOS
 
-Este repositorio contiene el proyecto **Agencia Venta de Vehículos**, una aplicación backend diseñada para la gestión y venta de vehículos. Está construido utilizando **Java** y tecnologías relacionadas, con un enfoque en buenas prácticas de desarrollo, arquitectura limpia y principios de diseño.
+Este repositorio contiene el proyecto **Agencia Venta de Vehículos**, una aplicación backend diseñada para la gestión y venta de vehículos. Está construido utilizando **SPRINGBOOT** **Java** y tecnologías relacionadas, con un enfoque en buenas prácticas de desarrollo, arquitectura limpia y principios de diseño.
 
 ---
 
